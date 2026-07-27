@@ -1,110 +1,125 @@
-<!-- markdownlint-disable MD001 MD041 -->
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/vllm-project/vllm/main/docs/assets/logos/vllm-logo-text-dark.png">
-    <img alt="vLLM" src="https://raw.githubusercontent.com/vllm-project/vllm/main/docs/assets/logos/vllm-logo-text-light.png" width=55%>
-  </picture>
-</p>
+<div align="center">
 
-<h3 align="center">
-Easy, fast, and cheap LLM serving for everyone
-</h3>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/site/assets/repository/banner-dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/site/assets/repository/banner-light.png">
+  <img src="./docs/site/assets/repository/banner-dark.png" alt="ForgeGuard AI — vLLM. ForgeGuard-maintained downstream fork of the vLLM project by vllm-project/vllm." width="100%">
+</picture>
 
-<p align="center">
-| <a href="https://docs.vllm.ai"><b>Documentation</b></a> | <a href="https://blog.vllm.ai/"><b>Blog</b></a> | <a href="https://arxiv.org/abs/2309.06180"><b>Paper</b></a> | <a href="https://x.com/vllm_project"><b>Twitter/X</b></a> | <a href="https://discuss.vllm.ai"><b>User Forum</b></a> | <a href="https://slack.vllm.ai"><b>Developer Slack</b></a> |
-</p>
+<br>
 
-🔥 We have built a vLLM website to help you get started with vLLM. Please visit [vllm.ai](https://vllm.ai) to learn more.
-For events, please visit [vllm.ai/events](https://vllm.ai/events) to join us.
+<a href="./docs/site/index.md"><img alt="Documentation" src="https://img.shields.io/badge/Documentation-Read-263746?style=for-the-badge"></a>
+<a href="https://github.com/vllm-project/vllm"><img alt="Upstream" src="https://img.shields.io/badge/Upstream-vllm--project-3A6EA5?style=for-the-badge"></a>
+<a href="./LICENSE"><img alt="License" src="https://img.shields.io/badge/License-Apache--2.0-5C5C5C?style=for-the-badge"></a>
+<a href="./docs/site/fork/security.md"><img alt="Security policy" src="https://img.shields.io/badge/Security-Policy-BE4D24?style=for-the-badge"></a>
+
+**ForgeGuard-maintained downstream fork of vLLM — documentation and attribution only. No ForgeGuard build artifacts are published.**
+
+[Upstream project](https://github.com/vllm-project/vllm) · [Upstream docs](https://docs.vllm.ai/) ·
+[Documentation](./docs/site/index.md) · [Support](./SUPPORT.md)
+
+</div>
+
+> ### Maintained fork
+>
+> This repository is a **ForgeGuard-maintained downstream fork** of
+> [**vLLM**](https://github.com/vllm-project/vllm).
+>
+> vLLM is created, owned, and developed by [`vllm-project/vllm`](https://github.com/vllm-project/vllm).
+> ForgeGuard did not create it and claims no ownership of it, its name, or its logo.
+> **ForgeGuard-specific documentation is not endorsed, supported, or reviewed by the upstream
+> project.**
+>
+> For product documentation, always use upstream: <https://docs.vllm.ai/>
+
+> ### ForgeGuard publishes no build artifacts for this repository
+>
+> There is **no ForgeGuard container image, no ForgeGuard package, and no ForgeGuard
+> release**. Nothing is published to GHCR, npm, or PyPI under the ForgeGuard name.
+>
+> This fork exists for documentation and attribution. To install or run the software,
+> use the upstream project's own distribution.
+
+| | |
+|---|---|
+| **Upstream project** | [`vllm-project/vllm`](https://github.com/vllm-project/vllm) |
+| **This fork tracks** | an untagged development commit (`49f31d7cee42`) of the upstream default branch — **not an upstream release** |
+| **Upstream license** | Apache-2.0 — see [`LICENSE`](./LICENSE) |
+| **ForgeGuard artifacts** | none published |
+
+**Links:** [ForgeGuard docs](./docs/site/index.md) ·
+[Upstream docs](https://docs.vllm.ai/) ·
+[Upstream README (preserved)](./docs/site/fork/upstream-readme.md) ·
+[Security policy](./docs/site/fork/security.md) ·
+[Support boundary](./SUPPORT.md) ·
+[License](./LICENSE) ·
+[Fork base](./FORK_UPSTREAM_BASE)
 
 ---
 
-## About
+## What vLLM is
 
-vLLM is a fast and easy-to-use library for LLM inference and serving.
+vLLM is an upstream project maintained at [`vllm-project/vllm`](https://github.com/vllm-project/vllm).
+This fork does not change what it is or how it works.
 
-Originally developed in the [Sky Computing Lab](https://sky.cs.berkeley.edu) at UC Berkeley, vLLM has grown into one of the most active open-source AI projects built and maintained by a diverse community of many dozens of academic institutions and companies from over 2000 contributors.
+The upstream README from this fork's base commit is preserved verbatim at
+[`docs/site/fork/upstream-readme.md`](./docs/site/fork/upstream-readme.md), and authoritative
+product documentation lives at <https://docs.vllm.ai/>.
 
-vLLM is fast with:
+## How to install and run it
 
-- State-of-the-art serving throughput
-- Efficient management of attention key and value memory with [**PagedAttention**](https://blog.vllm.ai/2023/06/20/vllm.html)
-- Continuous batching of incoming requests, chunked prefill, prefix caching
-- Fast and flexible model execution with piecewise and full CUDA/HIP graphs
-- Quantization: FP8, MXFP8/MXFP4, NVFP4, INT8, INT4, GPTQ/AWQ, GGUF, compressed-tensors, ModelOpt, TorchAO, and [more](https://docs.vllm.ai/en/latest/features/quantization/index.html)
-- Optimized attention kernels including FlashAttention, FlashInfer, TRTLLM-GEN, FlashMLA, and Triton
-- Optimized GEMM/MoE kernels for various precisions using CUTLASS, TRTLLM-GEN, CuTeDSL
-- Speculative decoding including n-gram, suffix, EAGLE, DFlash
-- Automatic kernel generation and graph-level transformations using torch.compile
-- Disaggregated prefill, decode, and encode
+vLLM is installed from the upstream project, either as a Python package or via the official `vllm/vllm-openai` container image that upstream publishes. The tagged `docker/Dockerfile` at `v0.26.0` is the supported source build.
 
-vLLM is flexible and easy to use with:
+Use upstream's installation instructions at <https://docs.vllm.ai/>. ForgeGuard does not publish an
+alternative distribution of this software.
 
-- Seamless integration with popular Hugging Face models
-- High-throughput serving with various decoding algorithms, including *parallel sampling*, *beam search*, and more
-- Tensor, pipeline, data, expert, and context parallelism for distributed inference
-- Streaming outputs
-- Generation of structured outputs using xgrammar or guidance
-- Tool calling and reasoning parsers
-- OpenAI-compatible API server, plus Anthropic Messages API and gRPC support
-- Efficient multi-LoRA support for dense and MoE layers
-- Support for NVIDIA GPUs, AMD GPUs, Intel GPUs, and x86/ARM/PowerPC CPUs. Additionally, diverse hardware plugins such as Google TPUs, Intel Gaudi, IBM Spyre, Huawei Ascend, Rebellions NPU, Apple Silicon, MetaX GPU, and more.
+> **This fork is not a release channel.** Its default branch tracks
+> an untagged development commit (`49f31d7cee42`) of the upstream default branch — **not an upstream release**. Install from an upstream
+> release rather than from this fork's branch state.
 
-vLLM seamlessly supports 200+ model architectures on Hugging Face, including:
+## What ForgeGuard adds
 
-- Decoder-only LLMs (e.g., Llama, Qwen, Gemma)
-- Mixture-of-Expert LLMs (e.g., Mixtral, DeepSeek-V3, Qwen-MoE, GPT-OSS)
-- Hybrid attention and state-space models (e.g., Mamba, Qwen3.5)
-- Multi-modal models (e.g., LLaVA, Qwen-VL, Pixtral)
-- Embedding and retrieval models (e.g., E5-Mistral, GTE, ColBERT)
-- Reward and classification models (e.g., Qwen-Math)
+- Clear upstream attribution, licensing, and support-boundary documentation.
+- A recorded fork base in [`FORK_UPSTREAM_BASE`](./FORK_UPSTREAM_BASE), verified in CI.
+- A documented upstream-sync process.
 
-Find the full list of supported models [here](https://docs.vllm.ai/en/latest/models/supported_models.html).
+## What ForgeGuard does not add
 
-## Getting Started
+- **No container image, package, or release.** Nothing is published under the ForgeGuard name.
+- No change to vLLM source code, behavior, or licensing.
+- No support commitment from the upstream project for anything ForgeGuard writes here.
 
-Install vLLM with [`uv`](https://docs.astral.sh/uv/) (recommended) or `pip`:
+## Things worth knowing
 
-```bash
-uv pip install vllm
-```
+- vLLM exposes an OpenAI-compatible server; the official image entrypoint is `vllm serve`.
+- Models requiring `--trust-remote-code` execute arbitrary code from the model repository, and Hugging Face model revisions are mutable unless pinned with `--revision`.
 
-Or [build from source](https://docs.vllm.ai/en/latest/getting_started/installation/gpu/index.html#build-wheel-from-source) for development.
+These are properties of vLLM itself, not of anything ForgeGuard built. Verify against
+upstream documentation before relying on them.
 
-Visit our [documentation](https://docs.vllm.ai/en/latest/) to learn more.
+## Security
 
-- [Installation](https://docs.vllm.ai/en/latest/getting_started/installation.html)
-- [Quickstart](https://docs.vllm.ai/en/latest/getting_started/quickstart.html)
-- [List of Supported Models](https://docs.vllm.ai/en/latest/models/supported_models.html)
+Do not report suspected vulnerabilities in a public issue. See
+[the security policy](./docs/site/fork/security.md); vulnerabilities in vLLM itself go
+upstream.
 
-## Contributing
+## Support
 
-We welcome and value any contributions and collaborations.
-Please check out [Contributing to vLLM](https://docs.vllm.ai/en/latest/contributing/index.html) for how to get involved.
+| Topic | Report to |
+|---|---|
+| ForgeGuard documentation or attribution | [ForgeGuard issues](https://github.com/forgeguard-ai/vllm/issues) |
+| vLLM defects, performance, model support, features | [Upstream issues](https://github.com/vllm-project/vllm/issues) |
 
-## Citation
+Reproduce product defects against the official upstream distribution before reporting them
+upstream. See [`SUPPORT.md`](./SUPPORT.md).
 
-If you use vLLM for your research, please cite our [paper](https://arxiv.org/abs/2309.06180):
+## License and attribution
 
-```bibtex
-@inproceedings{kwon2023efficient,
-  title={Efficient Memory Management for Large Language Model Serving with PagedAttention},
-  author={Woosuk Kwon and Zhuohan Li and Siyuan Zhuang and Ying Sheng and Lianmin Zheng and Cody Hao Yu and Joseph E. Gonzalez and Hao Zhang and Ion Stoica},
-  booktitle={Proceedings of the ACM SIGOPS 29th Symposium on Operating Systems Principles},
-  year={2023}
-}
-```
+vLLM is distributed under the **Apache-2.0**. Apache License 2.0, verified in the tagged source tree.
 
-## Contact Us
+The upstream [`LICENSE`](./LICENSE), copyright notices, and any `NOTICE` material are preserved
+unchanged. ForgeGuard documentation does not relicense upstream code.
 
-<!-- --8<-- [start:contact-us] -->
-- For technical questions and feature requests, please use GitHub [Issues](https://github.com/vllm-project/vllm/issues)
-- For discussing with fellow users, please use the [vLLM Forum](https://discuss.vllm.ai)
-- For coordinating contributions and development, please use [Slack](https://slack.vllm.ai)
-- For security disclosures, please use GitHub's [Security Advisories](https://github.com/vllm-project/vllm/security/advisories) feature
-- For collaborations and partnerships, please contact us at [collaboration@vllm.ai](mailto:collaboration@vllm.ai)
-<!-- --8<-- [end:contact-us] -->
-
-## Media Kit
-
-- If you wish to use vLLM's logo, please refer to [our media kit repo](https://github.com/vllm-project/media-kit)
+ForgeGuard claims no ownership of vLLM, its name, its logo, or its trademarks. Nothing
+here implies that [`vllm-project/vllm`](https://github.com/vllm-project/vllm) created, endorses, sponsors, or supports this
+fork. See [upstream attribution](./docs/site/fork/upstream.md).

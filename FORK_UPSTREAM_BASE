@@ -1,0 +1,28 @@
+# ForgeGuard fork base
+# Schema: .forgeguard/schemas/fork-upstream-base.schema.json
+#
+# Records which upstream state this fork's default branch mirrors. ForgeGuard
+# publishes no build artifacts for this repository, and this fork is NOT a
+# release channel -- use an upstream release for anything you intend to run.
+# The base commit is untagged: an upstream development commit.
+---
+$schema: ./.forgeguard/schemas/fork-upstream-base.schema.json
+version: 1
+
+upstream:
+  repository: "vllm-project/vllm"
+  url: "https://github.com/vllm-project/vllm"
+  license: "Apache-2.0"
+
+base:
+  kind: "branch-snapshot"
+  branch: "main"
+  commit: "49f31d7cee425a6d38f8c5bc76877986daf832ed"
+  tag_at_commit: null
+  recorded_on: "2026-07-27"
+
+forgeguard:
+  revision: 1
+  publishes_artifacts: false
+
+delta_inventory: "docs/site/fork/forgeguard-changes.md"

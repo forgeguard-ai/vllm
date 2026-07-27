@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgeguard.ai/schemas/fork-upstream-base.schema.json",
+  "title": "ForgeGuard fork base",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "upstream",
+    "base",
+    "forgeguard",
+    "delta_inventory"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "version": {
+      "const": 1
+    },
+    "upstream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "url",
+        "license"
+      ],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "pattern": "^[^/]+/[^/]+$"
+        },
+        "url": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        }
+      }
+    },
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "branch",
+        "commit",
+        "tag_at_commit",
+        "recorded_on"
+      ],
+      "properties": {
+        "kind": {
+          "const": "branch-snapshot"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tag_at_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recorded_on": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      }
+    },
+    "forgeguard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "publishes_artifacts"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "publishes_artifacts": {
+          "const": false
+        }
+      }
+    },
+    "delta_inventory": {
+      "type": "string"
+    }
+  }
+}

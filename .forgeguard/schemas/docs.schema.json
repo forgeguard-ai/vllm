@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgeguard.ai/schemas/docs.schema.json",
+  "title": "ForgeGuard documentation publishing manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "enabled", "project", "repository", "source", "publishing"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "enabled": { "type": "boolean" },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slug", "title", "kind", "summary"],
+      "properties": {
+        "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 2, "maxLength": 100 },
+        "kind": { "enum": ["original", "maintained-fork", "internal"] },
+        "summary": { "type": "string", "minLength": 12, "maxLength": 240 }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["owner", "name", "default_branch"],
+      "properties": {
+        "owner": { "type": "string" },
+        "name": { "type": "string" },
+        "default_branch": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_root", "entrypoint"],
+      "properties": {
+        "content_root": { "const": "docs/site" },
+        "entrypoint": { "const": "index.md" }
+      }
+    },
+    "publishing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["route", "versions", "include_generated"],
+      "properties": {
+        "route": { "type": "string", "pattern": "^/projects/[a-z0-9]+(?:-[a-z0-9]+)*/docs$" },
+        "versions": { "enum": ["releases", "default-branch", "both"] },
+        "include_generated": { "const": false }
+      }
+    },
+    "upstream": {
+      "type": "object",
+      "required": ["repository", "tracking_policy"],
+      "properties": {
+        "repository": { "type": "string" },
+        "tracking_policy": { "type": "string" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "project": { "properties": { "kind": { "const": "maintained-fork" } } } } },
+      "then": { "required": ["upstream"] }
+    }
+  ]
+}
+
